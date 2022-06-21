@@ -1,38 +1,54 @@
 pipeline
 {
 	agent any
-    
+	
     	stages
     	{
-        	stage('Build')
+        	stage('Checkout Code')
         	{
               		steps
               		{
-                  		echo "Build is Successful"
+                  		echo "Git Checkout is Successful"
               		}
         	}
 
-		stage('Deploy')
+		stage('Build')
 		{
 			steps
 			{              
-                  		echo "Deployment is Successful"
+                  		echo "Build is Successful"
               		}
         	}
 		
-		stage('Test')
+		stage('Sonarqube')
 		{
 			steps
 			{               
-                  		echo "Test is Successful"
+                  		echo "Sonarqube is Successful"
               		}
         	}
 		
-		stage('Release')
+		stage('Build Docker Image')
 		{
 			steps
 			{      
-                  		echo "Release is Successful"
+                  		echo "Docker Image is Built Successfully"
+            		}
+        	}
+		
+		stage('Push Docker Image to DockerHub')
+		{
+			steps
+			{      
+                  		echo "Docker Image is Pushed to DockerHub Successfully"
+            		}
+        	}
+		
+		stage('Deploy Application')
+		{
+			steps
+			{      
+                  		echo "Application is Deployed Successfully"
             		}
         	}
     	}
